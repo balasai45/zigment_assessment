@@ -36,10 +36,16 @@ export class UserPreferencesService {
   }
 
   async delete(userId: string) {
-    let res= this.preferenceModel.deleteOne({ userId });
-    if ((await res).deletedCount===0){
-      throw new NotFoundException('User preference not found');
+    const deletedUserPreference =
+      await this.preferenceModel.findOneAndDelete({ userId });
+
+    if (!deletedUserPreference) {
+      throw new NotFoundException(
+        `User preference with ID ${userId} not found.`,
+      );
     }
-    return res;
+    return {
+      message: `User Preference have been successfully deleted.`,
   }
+}
 }
