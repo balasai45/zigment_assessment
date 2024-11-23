@@ -61,7 +61,7 @@ npm run build
 ```bash
 npm start
 ```
-![alt text](image3.png)
+![alt text](./assets/image3.png)
 
 The application will be available at `http://localhost:3000`.
 
