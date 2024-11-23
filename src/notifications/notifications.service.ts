@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { SendNotificationDto } from './dto/notifications.dto';
@@ -44,7 +44,13 @@ export class NotificationsService {
   }
 
   async getLogs(userId: string) {
-    return  this.notificationLogModel.find({ userId });
+    const logCount = await this.notificationLogModel.countDocuments({ userId });
+    if (logCount === 0) {
+      throw new NotFoundException('Notification Log not found');
+    }
+
+    const logs = await this.notificationLogModel.find({ userId });
+    return logs;
   }
 
   async getStats() {

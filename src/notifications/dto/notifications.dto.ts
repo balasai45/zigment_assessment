@@ -7,16 +7,16 @@ export class SendNotificationDto {
   userId: string;
 
   @ApiProperty({ description: 'Type of notification', enum: ['marketing', 'newsletter', 'updates'] })
-  // @IsEnum(['marketing', 'newsletter', 'updates'])
-  @IsString()
-  type: string;
-  // type: 'marketing' | 'newsletter' | 'updates';
+  @IsEnum(['marketing', 'newsletter', 'updates'])
+  // @IsString()
+  // type: string;
+  type: 'marketing' | 'newsletter' | 'updates';
 
   @ApiProperty({ description: 'Channel to use for sending notification', enum: ['email', 'sms', 'push'] })
-  // @IsEnum(['email', 'sms', 'push'])
-  @IsString()
-  channel: string;
-  // channel: 'email' | 'sms' | 'push';
+  @IsEnum(['email', 'sms', 'push'])
+  // @IsString()
+  // channel: string;
+  channel: 'email' | 'sms' | 'push';
 
   @ApiProperty({
     description: 'Content of the notification',
