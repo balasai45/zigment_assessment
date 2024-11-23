@@ -1,6 +1,6 @@
 import { validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import { CreatePreferenceDto } from './dto/create-preference.dto';
+import { CreatePreferenceDto } from '../src/user-preferences/dto/user-preferences.dto';
 
 
 describe('CreatePreferenceDto', () => {

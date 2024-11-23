@@ -19,7 +19,7 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
     NotificationsModule,
     UserPreferencesModule,
     ThrottlerModule.forRoot([{
-      ttl: 60000,
+      ttl: 60,
       limit: 10,
     }]),],
   controllers: [],

@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { PreferencesService } from './preferences.service';
+import { UserPreferencesService } from '../src/user-preferences/user-preferences.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserPreference } from './interfaces/user-preference.interface';
+import { UserPreference } from '../src/user-preferences/interfaces/user-preferences.interface';
 
-describe('PreferencesService', () => {
-  let service: PreferencesService;
+describe('UserPreferencesService', () => {
+  let service: UserPreferencesService;
   let model: Model<UserPreference>;
 
   const mockUserPreference = {
@@ -28,7 +28,7 @@ describe('PreferencesService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        PreferencesService,
+        UserPreferencesService,
         {
           provide: getModelToken('UserPreference'),
           useValue: {
@@ -50,7 +50,7 @@ describe('PreferencesService', () => {
       ],
     }).compile();
 
-    service = module.get<PreferencesService>(PreferencesService);
+    service = module.get<UserPreferencesService>(UserPreferencesService);
     model = module.get<Model<UserPreference>>(getModelToken('UserPreference'));
   });
 
@@ -59,7 +59,7 @@ describe('PreferencesService', () => {
   });
 
   it('should find a user preference by userId', async () => {
-    const result = await service.findByUserId('user123');
+    const result = await service.findOne('user123');
     expect(result).toEqual(mockUserPreference);
   });
 

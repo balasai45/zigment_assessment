@@ -46,7 +46,7 @@ describe('Rate Limiting (e2e)', () => {
     };
 
     // Exceed the rate limit
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i <=12; i++) {
       await request(app.getHttpServer())
         .post('/api/notifications/send')
         .send(payload);
