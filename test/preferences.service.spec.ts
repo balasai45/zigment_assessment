@@ -84,7 +84,9 @@ describe('UserPreferencesService', () => {
 
 it('should delete a user preference', async () => {
     const result = await service.delete('user123');
-    expect(result).toEqual({ deletedCount: 1 });
+    expect(result).toEqual({
+      message: `User Preference have been successfully deleted.`,
+  });
   });
   
 });

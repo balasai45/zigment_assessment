@@ -37,7 +37,7 @@ export class UserPreferencesService {
 
   async delete(userId: string) {
     const deletedUserPreference =
-      await this.preferenceModel.findOneAndDelete({ userId });
+      await this.preferenceModel.deleteOne({ userId });
 
     if (!deletedUserPreference) {
       throw new NotFoundException(

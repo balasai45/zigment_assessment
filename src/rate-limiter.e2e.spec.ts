@@ -27,7 +27,6 @@ describe('Rate Limiting (e2e)', () => {
       content: { subject: 'Test', body: 'Message' },
     };
 
-    
       const response = await request(app.getHttpServer())
         .post('/api/notifications/send')
         .send(payload)
@@ -37,5 +36,4 @@ describe('Rate Limiting (e2e)', () => {
     
   });
 
- 
 });
